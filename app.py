@@ -4,8 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
-from main import run_pipeline
-from core.rag_engine import ask_question
+
 
 import os
 
@@ -46,6 +45,7 @@ def process_video(request: ProcessRequest):
         raise HTTPException(status_code=400, detail="Please enter a YouTube URL.")
 
     try:
+        from main import run_pipeline
         result = run_pipeline(
             request.source.strip(),
             request.language
@@ -87,6 +87,7 @@ def ask(request: QuestionRequest):
         )
 
     try:
+        from core.rag_engine import ask_question
         answer = ask_question(
             current_session["rag_chain"],
             request.question.strip()
