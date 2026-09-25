@@ -1,0 +1,45 @@
+# Audio / Video
+yt-dlp>=2024.4.9
+pydub>=0.25.1
+ffmpeg-python>=0.2.0
+audioop-lts; python_version >= "3.13"
+
+# Speech-to-Text
+openai-whisper>=20231117
+torch>=2.2.0
+torchaudio>=2.2.0
+
+# Translation / API
+deep-translator>=1.11.4
+requests>=2.32.0
+
+# FastAPI
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# LangChain
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langchain-text-splitters
+
+# Google Gemini
+google-genai
+langchain-google-genai
+
+# RAG / Vector Database
+chromadb>=0.5.0
+langchain-chroma
+sentence-transformers>=3.0.0
+langchain-huggingface>=0.0.3
+huggingface-hub>=0.23.0
+tiktoken>=0.7.0
+
+# PDF / Export
+reportlab>=4.2.0
+fpdf2>=2.7.9
+
+# Utilities
+python-dotenv>=1.0.0
+numpy>=1.26.0
+tqdm>=4.66.0

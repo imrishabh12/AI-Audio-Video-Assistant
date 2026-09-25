@@ -1,0 +1,26 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Generated audio/video files
+downloads/
+
+# Vector database
+vector_db/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

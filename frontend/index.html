@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Audio Video Assistant</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+
+        <header class="hero">
+
+            <div class="hero-content">
+
+                <div class="brand">
+                    <div class="logo">AI</div>
+
+                    <span>AI AUDIO VIDEO ASSISTANT</span>
+                </div>
+
+                <h1>
+                    Turn long videos into
+                    <span>intelligent insights</span>
+                </h1>
+
+                <p class="hero-description">
+                    Upload a YouTube video and let AI transcribe, summarize,
+                    extract insights and answer questions from the content.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- PROCESS CARD -->
+
+        <section class="process-card">
+
+            <div class="process-header">
+
+                <div>
+                    <span class="section-label">START ANALYSIS</span>
+
+                    <h2>Analyze a video</h2>
+
+                    <p>
+                        Paste a YouTube URL and let the AI analyze the entire conversation.
+                    </p>
+                </div>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    AI Ready
+                </div>
+
+            </div>
+
+
+            <div class="input-area">
+
+                <div class="url-input">
+
+                    <span class="input-icon">▶</span>
+
+                    <input
+                        type="text"
+                        id="videoUrl"
+                        placeholder="Paste your YouTube video URL..."
+                    >
+
+                </div>
+
+                <button id="processBtn" onclick="processVideo()">
+                    <span>Analyze Video</span>
+                    <span class="arrow">→</span>
+                </button>
+
+            </div>
+
+
+            <div class="options">
+
+                <span>Supported input: YouTube URL</span>
+
+                <div class="language-selector">
+
+                    <label for="language">Language</label>
+
+                    <select id="language">
+                        <option value="english">English</option>
+                        <option value="hinglish">Hinglish</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+
+        <section class="features">
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple">✦</div>
+
+                <div>
+                    <h3>AI Summary</h3>
+
+                    <p>
+                        Get the important points from long videos in seconds.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue">⌁</div>
+
+                <div>
+                    <h3>Smart Insights</h3>
+
+                    <p>
+                        Extract decisions, action items and unresolved topics.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon pink">◎</div>
+
+                <div>
+                    <h3>Ask Anything</h3>
+
+                    <p>
+                        Chat with your processed video using RAG-powered Q&A.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+
+        <div id="loading" class="loading hidden">
+
+            <div class="spinner"></div>
+
+            <div>
+                <strong>Analyzing your video...</strong>
+
+                <p>
+                    Transcribing audio and generating AI insights.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <section id="results" class="hidden">
+
+            <div class="results-header">
+
+                <div>
+                    <span class="section-label">AI ANALYSIS</span>
+
+                    <h2 id="title"></h2>
+                </div>
+
+            </div>
+
+
+            <div class="grid">
+
+                <div class="card">
+
+                    <div class="card-heading">
+                        <span>✦</span>
+                        <h3>Summary</h3>
+                    </div>
+
+                    <div id="summary"></div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-heading">
+                        <span>✓</span>
+                        <h3>Action Items</h3>
+                    </div>
+
+                    <div id="actionItems"></div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-heading">
+                        <span>◆</span>
+                        <h3>Key Decisions</h3>
+                    </div>
+
+                    <div id="decisions"></div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-heading">
+                        <span>?</span>
+                        <h3>Open Questions</h3>
+                    </div>
+
+                    <div id="questions"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RAG CHAT -->
+
+            <div class="chat-card">
+
+                <div class="chat-header">
+
+                    <div>
+
+                        <span class="section-label">RAG POWERED</span>
+
+                        <h2>Ask Your Meeting</h2>
+
+                        <p>
+                            Ask questions and get answers directly from the transcript.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chatMessages" class="chat-messages">
+
+                    <div class="message assistant">
+
+                        <div class="avatar">AI</div>
+
+                        <div class="message-content">
+                            Your meeting has been processed.
+                            Ask me anything about it.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input">
+
+                    <input
+                        type="text"
+                        id="questionInput"
+                        placeholder="Ask something about the meeting..."
+                        onkeydown="handleEnter(event)"
+                    >
+
+                    <button onclick="askQuestion()">
+                        Ask →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ERROR -->
+
+        <div id="error" class="error hidden"></div>
+
+
+        <footer>
+            <span>AI Audio Video Assistant</span>
+            <span>Powered by Whisper · Gemini · RAG</span>
+        </footer>
+
+    </div>
+
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
